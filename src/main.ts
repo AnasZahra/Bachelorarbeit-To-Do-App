@@ -7,7 +7,7 @@ import { appConfig } from './app/app.config';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';  // <-- Add this line
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { environment } from '../environments/environment'; // Assuming you have an environment file with Firebase config
+import { environment } from '../src/environments/environment'; // Assuming you have an environment file with Firebase config
 
 bootstrapApplication(AppComponent, {
   providers: [
