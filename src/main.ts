@@ -5,6 +5,10 @@ import { routes } from './app/app.routes';
 import { provideRouter } from '@angular/router';
 import { appConfig } from './app/app.config';
 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';  // <-- Add this line
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment'; // Assuming you have an environment file with Firebase config
+
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
@@ -15,7 +19,8 @@ bootstrapApplication(AppComponent, {
         redirect_uri: window.location.origin
       }
     }),
-    ...appConfig.providers // Spread the existing appConfig providers if needed
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),  // Initialize Firebase with config
+    provideFirestore(() => getFirestore()),  // Provide Firestore
   ]
 })
   .catch((err) => console.error(err));
