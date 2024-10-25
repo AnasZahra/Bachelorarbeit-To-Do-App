@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TodosService } from '../todos.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   standalone: true,
@@ -10,6 +11,7 @@ import { TodosService } from '../todos.service';
 })
 export class HeaderComponent {
   private todosService = inject(TodosService);
+  private authService = inject(AuthService);
 
   title = '';
 
@@ -17,8 +19,17 @@ export class HeaderComponent {
     if (this.title) {
       this.todosService.addItem(this.title);
 
-      // Reset title to clear input field.
-      this.title = '';
+      //Call firebase add method...
+
+      this.todosService
+        .addUserwiseTodo(
+          this.authService.loggedInCurrentUser()?.uid,
+          this.title
+        )
+        .subscribe((addDocRef) => {
+          // Reset title to clear input field.
+          this.title = '';
+        });
     }
   }
 }

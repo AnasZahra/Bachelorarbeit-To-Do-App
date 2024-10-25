@@ -1,19 +1,25 @@
-<!-- Show the login button when the user is not authenticated -->
-<div *ngIf="!(auth.isAuthenticated$ | async)">
-  <button (click)="login()">Log in</button>
+<!-- Show the login button when the user is not authenticated  -->
+<div *ngIf="authService.loggedInCurrentUser() === null">
+  <!-- <button (click)="login()">Log in</button> -->
+  <router-outlet></router-outlet>
 </div>
 
 <!-- Show the rest of the app after the user is authenticated -->
-<div *ngIf="auth.isAuthenticated$ | async">
+<div *ngIf="authService.loggedInCurrentUser() !== null">
   <h1>Secure To-Do List Application</h1>
-  
+
   <!-- Add logout button -->
   <button (click)="logout()">Log out</button>
 
   <!-- To-Do list section -->
   <section class="todoapp">
+    @if(!todoService.isLoading()){
     <app-todo-header></app-todo-header>
+
     <app-todo-list></app-todo-list>
     <app-todo-footer></app-todo-footer>
+    }@else {
+    <h3>Loading Todo.. Wait..</h3>
+    }
   </section>
 </div>

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { Todo, TodosService } from '../todos.service';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-todo-footer',
@@ -12,6 +13,7 @@ import { RouterLink } from '@angular/router';
 export class FooterComponent {
   private location = inject(Location);
   private todosService = inject(TodosService);
+  private authService = inject(AuthService);
 
   get todos(): Todo[] {
     return this.todosService.getItems();
@@ -30,6 +32,9 @@ export class FooterComponent {
   }
 
   clearCompleted() {
+    this.todosService.deleteAllCompletedTodos(
+      this.authService.loggedInCurrentUser()?.uid
+    );
     this.todosService.clearCompleted();
   }
 }
