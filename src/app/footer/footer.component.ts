@@ -37,4 +37,16 @@ export class FooterComponent {
     );
     this.todosService.clearCompleted();
   }
+
+  confirmClearCompleted() {
+    const confirmed = confirm("Are you sure you want to clear all completed tasks?");
+    if (confirmed) {
+      // Only proceed with deletion if the user confirms
+      this.todosService.deleteAllCompletedTodos(
+        this.authService.loggedInCurrentUser()?.uid
+      );
+      this.todosService.clearCompleted();
+    }
+  }
+  
 }

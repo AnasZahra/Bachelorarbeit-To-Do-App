@@ -2,7 +2,7 @@
   <footer class="footer">
     <span class="todo-count">
       <strong>{{ activeTodos.length }}</strong>
-      {{ activeTodos.length === 1 ? "item" : "items" }} left
+      {{ activeTodos.length === 1 ? "task" : "tasks" }} left
     </span>
     <ul class="filters">
       <li>
@@ -16,7 +16,7 @@
       </li>
     </ul>
     @if (completedTodos.length > 0) {
-      <button type="button" class="clear-completed" (click)="clearCompleted()">
+      <button type="button" class="clear-completed" (click)="confirmClearCompleted()">
         Clear Completed
       </button>
     }

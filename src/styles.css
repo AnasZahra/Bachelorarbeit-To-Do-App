@@ -1,5 +1,4 @@
-/* used for things that should be hidden in the ui,
-but useful for people who use screen readers */
+/* Default Styles */
 .visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -31,3 +30,101 @@ app-todo-item {
 app-todo-item:last-child {
   border-bottom: none;
 }
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  color: #333;
+  margin-top: 120px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-weight: 600;
+}
+
+.logout-button {
+  background-color: #ff6c73;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.logout-button:hover {
+  background-color: #4f2c2f;
+}
+
+.logout-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+/* Mobile Styles */
+@media (max-width: 431px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 60px;
+  }
+
+  .toggle-all {
+    width: 30px !important;
+    height: 50px !important;
+  }
+
+  .logout-button {
+
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .logout-button-container {
+    margin-top: 15px;
+  }
+
+  app-todo-item {
+
+    
+  }
+
+  .todo-count strong,
+  .clear-completed {
+    font-size: 0.9em; /* Reduce font size for other elements */
+    
+  }
+
+  /* General item size adjustments */
+  .filters li {
+
+    width: 30px;
+    font-size: 0.9em;
+  }
+
+  .todoapp {
+
+    padding-right: 30px;
+    padding-left: 30px;
+    margin: 0 auto;
+  }
+  
+  .filters{}
+
+
+
+}
+
+
+

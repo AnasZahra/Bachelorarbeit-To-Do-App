@@ -6,20 +6,28 @@
 
 <!-- Show the rest of the app after the user is authenticated -->
 <div *ngIf="authService.loggedInCurrentUser() !== null">
-  <h1>Secure To-Do List Application</h1>
+
+
+
+  <h1>SECURE TO-DO LIST APP</h1>
 
   <!-- Add logout button -->
-  <button (click)="logout()">Log out</button>
+
 
   <!-- To-Do list section -->
   <section class="todoapp">
     @if(!todoService.isLoading()){
+    <app-todo-footer></app-todo-footer>
     <app-todo-header></app-todo-header>
 
     <app-todo-list></app-todo-list>
-    <app-todo-footer></app-todo-footer>
+
     }@else {
     <h3>Loading Todo.. Wait..</h3>
     }
   </section>
+
+  <div class="logout-button-container">
+    <button class="logout-button" (click)="logout()">Log out</button>
+  </div>
 </div>
