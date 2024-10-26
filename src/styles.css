@@ -108,7 +108,7 @@ h2 {
 
   /* General item size adjustments */
   .filters li {
-
+    padding: 10px;
     width: 30px;
     font-size: 0.9em;
   }
@@ -118,6 +118,7 @@ h2 {
     padding-right: 30px;
     padding-left: 30px;
     margin: 0 auto;
+    padding-bottom: 50px;
   }
   
   .filters{}
