@@ -1,3 +1,5 @@
+# Ignore node modules, Angular cache, and environment files
 .DS_Store
 /node_modules
 .angular
+.env.development.local
